@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Input, Row, Col, Button, Card } from "antd";
-import {useAddStudentMutation } from '../../services/studentApi'
+import { useAddStudentMutation } from "../../services/studentApi";
 const AddStudent = ({ history }) => {
   const [addStudent, { isLoading, isSuccess }] = useAddStudentMutation();
 
@@ -11,9 +11,9 @@ const AddStudent = ({ history }) => {
   });
   const handleChange = (e) =>
     setData({ ...data, [e.target.name]: e.target.value });
-  const handleSubmit =async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    await addStudent(data)
+    await addStudent(data);
     //console.log(data);
 
     // after submit data
