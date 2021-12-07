@@ -30,7 +30,10 @@ const Students = () => {
                 actions={[
                   <EyeOutlined
                     key="view"
-                    onClick={() => history.push(`/students/${id}`)}
+                    onClick={() => history.push(`/students/${id}`)
+                  
+
+                  }
                   />,
                   <EditOutlined
                     key="edit"

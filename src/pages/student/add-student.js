@@ -1,18 +1,20 @@
 import { useState } from "react";
 import { Input, Row, Col, Button, Card } from "antd";
-
+import {useAddStudentMutation } from '../../services/studentApi'
 const AddStudent = ({ history }) => {
+  const [addStudent, { isLoading, isSuccess }] = useAddStudentMutation();
+
   const [data, setData] = useState({
     fullName: "",
     phone: "",
     email: "",
   });
-
   const handleChange = (e) =>
     setData({ ...data, [e.target.name]: e.target.value });
-  const handleSubmit = (e) => {
+  const handleSubmit =async (e) => {
     e.preventDefault();
-    console.log(data);
+    await addStudent(data)
+    //console.log(data);
 
     // after submit data
     setData({
@@ -34,6 +36,7 @@ const AddStudent = ({ history }) => {
               name="fullName"
               value={data.fullName}
               onChange={handleChange}
+              disabled={isLoading}
             />
           </Col>
           <Col span={24}>
@@ -43,6 +46,7 @@ const AddStudent = ({ history }) => {
               name="phone"
               value={data.phone}
               onChange={handleChange}
+              disabled={isLoading}
             />
           </Col>
           <Col span={24}>
@@ -52,10 +56,11 @@ const AddStudent = ({ history }) => {
               name="email"
               value={data.email}
               onChange={handleChange}
+              disabled={isLoading}
             />
           </Col>
           <Col span={24}>
-            <Button htmlType="submit" type="primary">
+            <Button disabled={isLoading} htmlType="submit" type="primary">
               Add Student
             </Button>
           </Col>
