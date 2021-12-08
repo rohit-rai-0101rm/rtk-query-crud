@@ -1,10 +1,11 @@
 import { Row, Col, Card, Typography, Spin } from "antd";
 import { EditOutlined, DeleteOutlined, EyeOutlined } from "@ant-design/icons";
 import { useHistory } from "react-router-dom";
-import { useGetStudentsQuery } from "../../services/studentApi";
+import { useGetStudentsQuery ,useDeleteStudentMutation} from "../../services/studentApi";
 
 const { Title, Paragraph } = Typography;
 const Students = () => {
+  const[deleteStudent]=useDeleteStudentMutation()
   let history = useHistory();
   const { data, isFetching } = useGetStudentsQuery();
   console.log(data);
@@ -41,7 +42,7 @@ const Students = () => {
                   />,
                   <DeleteOutlined
                     key="setting"
-                    onClick={() => alert("delete item!")}
+                    onClick={() => deleteStudent(id)}
                   />,
                 ]}
               >

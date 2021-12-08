@@ -8,7 +8,7 @@ export const studentsApi = createApi({
   endpoints: (builder) => ({
     getStudents: builder.query({
       query: () => "students",
-      transformResponse: (res) => res.reverse(),
+      //transformResponse: (res) => res.reverse(),
       providesTags: ["Student"],
     }),
     getStudentById: builder.query({
