@@ -37,7 +37,7 @@ const Students = () => {
                   />,
                   <EditOutlined
                     key="edit"
-                    onClick={() => history.push("/students/edit/100")}
+                    onClick={() => history.push(`/students/edit/${id}`)}
                   />,
                   <DeleteOutlined
                     key="setting"

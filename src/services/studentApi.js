@@ -23,6 +23,22 @@ export const studentsApi = createApi({
       invalidatesTags: ["Student"],
 
     }),
+    updateStudent: builder.mutation({
+      query: ({ id, ...student }) => ({
+        url: `students/${id}`,
+        method: "PUT",
+        body: student,
+      }),
+      invalidatesTags: ["Student"],
+    }),
+    deleteStudent: builder.mutation({
+      query: (id) => ({
+        url: `students/${id}`,
+        method: "DELETE",
+      }),
+      invalidatesTags: ["Student"],
+    }),
   }),
 });
-export const { useGetStudentsQuery, useGetStudentByIdQuery,useAddStudentMutation } = studentsApi;
+export const { useGetStudentsQuery, useGetStudentByIdQuery,useAddStudentMutation,useUpdateStudentMutation,
+  useDeleteStudentMutation } = studentsApi;

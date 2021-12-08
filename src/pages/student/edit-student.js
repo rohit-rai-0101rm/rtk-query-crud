@@ -1,18 +1,30 @@
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import { Input, Row, Col, Button, Card } from "antd";
+import { useGetStudentsQuery, useUpdateStudentMutation } from "../../services/studentApi";
 const EditStudent = ({ history, match }) => {
   const [data, setData] = useState({
     fullName: "",
     phone: "",
     email: "",
   });
+  const [updateStudent, { isLoading, isSuccess }] = useUpdateStudentMutation();
 
+  const { data:studentData } = useGetStudentsQuery(undefined, {
+    selectFromResult: ({ data }) => ({
+      data: data?.find((el) => el.id == match.params.id),
+    }),
+  });
+useEffect(()=>{
+  if(studentData){
+    setData(studentData)
+  }
+},[studentData])
   const handleChange = (e) =>
     setData({ ...data, [e.target.name]: e.target.value });
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
     console.log(data);
-
+    await updateStudent(data)
     // after submit data
     setData({
       fullName: "",
