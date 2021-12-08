@@ -1,6 +1,7 @@
-import { useState } from "react";
-import { Input, Row, Col, Button, Card } from "antd";
-import { useAddStudentMutation } from "../../services/studentApi";
+import { useState,useEffect } from "react";
+import { Input, Row, Col, Button, Card,message } from "antd";
+import { useAddStudentMutation } from "../../services/studentApi"
+const key="add_student"
 const AddStudent = ({ history }) => {
   const [addStudent, { isLoading, isSuccess }] = useAddStudentMutation();
 
@@ -25,6 +26,15 @@ const AddStudent = ({ history }) => {
 
     history.push("/");
   };
+  useEffect(() => {
+    if(isLoading){
+      message.loading({content:"creating new student...",key})
+    }
+    if(isSuccess){
+      message.success({content:"creating student successfully...",key,duration:3})
+    }
+   
+  }, [isLoading,isSuccess])
   return (
     <form onSubmit={handleSubmit}>
       <Card title="Create a new student">

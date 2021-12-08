@@ -1,11 +1,11 @@
-import { Row, Col, Card, Typography, Spin } from "antd";
-import { EditOutlined, DeleteOutlined, EyeOutlined } from "@ant-design/icons";
+import { Row, Col, Card, Typography, Spin,message } from "antd";
 import { useHistory } from "react-router-dom";
 import { useGetStudentsQuery ,useDeleteStudentMutation} from "../../services/studentApi";
+import StudentItem from "./student-item";
 
 const { Title, Paragraph } = Typography;
+
 const Students = () => {
-  const[deleteStudent]=useDeleteStudentMutation()
   let history = useHistory();
   const { data, isFetching } = useGetStudentsQuery();
   console.log(data);
@@ -17,45 +17,12 @@ const Students = () => {
         </div>
       ) : (
         <Row gutter={[20, 20]}>
-          {data.map(({ id, fullName, email, phone }) => (
-            <Col span={6} key={id}>
-              <Card
-                hoverable={true}
-                bordered={false}
-                cover={
-                  <img
-                    alt="example"
-                    src={`https://i.pravatar.cc/1920?img=${id}`}
-                  />
-                }
-                actions={[
-                  <EyeOutlined
-                    key="view"
-                    onClick={() => history.push(`/students/${id}`)
-                  
-
-                  }
-                  />,
-                  <EditOutlined
-                    key="edit"
-                    onClick={() => history.push(`/students/edit/${id}`)}
-                  />,
-                  <DeleteOutlined
-                    key="setting"
-                    onClick={() => deleteStudent(id)}
-                  />,
-                ]}
-              >
-                <div className="student-info">
-                  <Title level={5}>{fullName}</Title>
-                  <Paragraph>{email}</Paragraph>
-                  <Paragraph>{phone}</Paragraph>
-                </div>
-              </Card>
-            </Col>
+          {data.map((student) => (
+            <StudentItem key={student.id} student={student} />
           ))}
         </Row>
       )}
+      
     </>
   );
 };

@@ -1,18 +1,6 @@
 {
   "students": [
     {
-      "id": 13,
-      "fullName": "Mangalya Kaur",
-      "phone": "+91-696-4658626",
-      "email": "Purnima_Embranthiri51@yahoo.co.in"
-    },
-    {
-      "id": 14,
-      "fullName": "Marut Gupta",
-      "phone": "+917208805963",
-      "email": "Shresth.Varman47@yahoo.co.in"
-    },
-    {
       "id": 15,
       "fullName": "Rajinder Deshpande",
       "phone": "+919109084503",
@@ -37,34 +25,16 @@
       "id": 18
     },
     {
-      "fullName": "Rohit Rai222",
-      "phone": "222",
-      "email": "2222",
-      "id": 19
-    },
-    {
-      "fullName": "sdfsdf333",
-      "phone": "81442 56428",
-      "email": "rohitrai0101rm@gmail.com",
-      "id": 20
-    },
-    {
-      "fullName": "sdfsdf444",
-      "phone": "81442 56428",
-      "email": "rohitrai0101rm@gmail.com",
-      "id": 21
-    },
-    {
-      "fullName": "Rohit Rai",
-      "phone": "81442 56428",
-      "email": "rohitrai0101rm@gmail.com",
-      "id": 23
-    },
-    {
       "fullName": "d",
       "phone": "dfdsf",
       "email": "d",
       "id": 24
+    },
+    {
+      "fullName": "",
+      "phone": "",
+      "email": "",
+      "id": 26
     }
   ]
 }
